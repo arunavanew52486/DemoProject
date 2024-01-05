@@ -1,0 +1,44 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "arunava@gmail.com",
+      "password": "1234",
+      "name": {
+        "firstName": "Arunava",
+        "lastName": "Das"
+      },
+      "gender": "MALE",
+      "age": 23,
+      "mobile": "8250995671",
+      "address": {
+        "country": "India",
+        "state": "West Bengal",
+        "pin": "713404",
+        "city": "Painta",
+        "area": "Vill-Painta, PO-Painta, PS-Madhabdihi",
+        "landmark": "Near High School"
+      }
+    },
+    {
+      "email": "arunava52486@gmail.com",
+      "mobile": "08250993877",
+      "name": {
+        "firstName": "Arunava",
+        "lastName": "Das"
+      },
+      "gender": "MALE",
+      "age": "23",
+      "address": {
+        "country": "India",
+        "state": "WEST BENGAL",
+        "pin": "2423423",
+        "city": "PURBA BARDHAMAN",
+        "landmark": "Near High School",
+        "area": "asdf asdfa fdsafdga"
+      },
+      "password": "65yy64y4554y",
+      "id": 2
+    }
+  ]
+}

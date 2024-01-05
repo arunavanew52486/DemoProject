@@ -1,0 +1,21 @@
+<div>
+    <div class="grid grid-cols-1 grid-rows-1 text-white">
+
+        <div class="z-10 col-span-1 col-start-1 row-span-1 row-start-1 flex flex-col items-center justify-center">
+            <div class="text-center">
+                <h1 class="text-6xl font-bold">
+                    Welcome to our
+                </h1>
+                <h1 class="text-9xl font-bold">
+                    Demo App
+                </h1>
+            </div>
+            <div class="mt-14 text-3xl font-semibold text-center text-black flex gap-4">
+                <div (click)="navigate('login')" class="bg-white p-3 px-5 hover:cursor-pointer hover:scale-105 transition-all">Login</div>
+                <div (click)="navigate('register')" class="bg-white p-3 px-5 hover:cursor-pointer">Register</div>
+            </div>
+        </div>
+
+        <img src="assets/images/background4.jpg" class="z-0 h-screen w-full brightness-50 col-span-1 col-start-1 row-span-1 row-start-1" alt="">
+    </div>
+</div>
