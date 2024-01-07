@@ -1,5 +1,6 @@
 <div id="container" class="grid grid-cols-12">
-    <div class="col-span-10 col-start-2 md:col-span-8 md:col-start-3 lg:col-span-6 lg:col-start-4 xl:col-span-4 xl:col-start-5 bg-white p-8 lg:p-10 mt-10 rounded-md drop-shadow-xl">
+    <main class="col-span-10 col-start-2 md:col-span-8 md:col-start-3 lg:col-span-6 lg:col-start-4 xl:col-span-4 xl:col-start-5 bg-white p-8 lg:p-10 my-10 rounded-md drop-shadow-xl">
+        <h1 class="text-3xl text-center mb-4 font-semibold">Login</h1>
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     
             <!--! email -->
@@ -39,7 +40,7 @@
             </p>
     
         </form>
-    </div>
+    </main>
 </div>
 
 
