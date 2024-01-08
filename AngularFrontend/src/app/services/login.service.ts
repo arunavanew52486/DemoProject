@@ -10,7 +10,9 @@ export class LoginService {
     constructor(private _http: HttpClient) {}
 
     login(data: any) {
-        // console.log(data);
-        this._http.post(this.URL, data)
+        console.log(data);
+        this._http.post(this.URL, data).subscribe((data) => {
+            console.log(data)
+        })
     }
 }

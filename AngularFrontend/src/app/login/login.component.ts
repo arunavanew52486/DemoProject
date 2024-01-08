@@ -19,7 +19,7 @@ export class LoginComponent {
     }
 
     onSubmit() {
-        console.log(this.loginForm.value)
-        // this._httpLogin.login(this.loginForm.value);
+        // console.log(this.loginForm.value)
+        this._httpLogin.login(this.loginForm.value);
     }
 }
