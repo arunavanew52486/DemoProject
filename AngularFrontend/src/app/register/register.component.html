@@ -1,96 +1,203 @@
-<div class="bg-white p-8 my-12 mx-auto w-[50%]">
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+<div id="container" class="grid grid-cols-12">
+    <main class="col-span-10 col-start-2 md:col-span-8 md:col-start-3 lg:col-span-6 lg:col-start-4 bg-white p-8 my-10 rounded-md drop-shadow-xl">
+        <h1 class="text-3xl text-center mb-4 font-semibold">Register User</h1>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
-        <div class="mb-5">
-          <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
-          <input formControlName="email" type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@demo.com">
-        </div>
-
-        <div class="mb-5 flex gap-4" formGroupName="name">
-
-            <div>
-                <label for="firstName" class="mb-2 text-sm font-medium text-gray-900 dark:text-white">First Name:</label>
-                <input formControlName="firstName" type="text" id="firstName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-            </div>
-            <div>
-                <label for="lastName" class="mb-2 text-sm font-medium text-gray-900 dark:text-white">Last Name:</label>
-                <input formControlName="lastName" type="text" id="lastName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-            </div>
-
-        </div>
-
-        <div class="mb-5">
-          <label for="mobile" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your mobile</label>
-          <input formControlName="mobile" type="text" id="mobile" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-        </div>
-
-        <div class="mb-5 flex gap-4">
+            <!--! email -->
             <div class="mb-5">
-                <label for="gender" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                    Select gender
+                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    Your email
                 </label>
-                <select formControlName="gender" id="gender" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option value="#">Select Gender</option>
-                    <option value="MALE">Male</option>
-                    <option value="FEMALE">Female</option>
-                    <option value="OTHER">Other</option>
-                </select>
+                <input
+                    formControlName="email"
+                    type="email"
+                    id="email"
+                    placeholder="name@demo.com"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                >
             </div>
-
+    
+            <!--! first & last name -->
+            <div class="mb-5 md:flex gap-4" formGroupName="name">
+                <div class="w-full">
+                    <label for="firstName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        First Name
+                    </label>
+                    <input
+                        formControlName="firstName"
+                        type="text"
+                        id="firstName"
+                        class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    >
+                </div>
+                <div class="w-full">
+                    <label for="lastName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Last Name
+                    </label>
+                    <input
+                        formControlName="lastName"
+                        type="text"
+                        id="lastName"
+                        class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    >
+                </div>
+            </div>
+    
+            <!--! mobile -->
             <div class="mb-5">
-                <label for="age" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your age</label>
-                <input formControlName="age" type="text" id="age" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <label for="mobile" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    Your mobile
+                </label>
+                <input
+                    formControlName="mobile"
+                    type="text"
+                    id="mobile"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                >
             </div>
-        </div>
 
-        <div class="mb-5">
-          <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
-          <input formControlName="password" type="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-        </div>
-
-        <div class="mb-5" formGroupName="address">
-            <fieldset class="border-2 p-4">
-                <legend>Address:</legend>
-
-                <div class="flex gap-4">
-                    <div>
-                        <label for="country" class="mb-2 text-sm font-medium text-gray-900 dark:text-white">Country:</label>
-                        <input formControlName="country" type="country" id="country" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    </div>
-                    <div>
-                        <label for="state" class="mb-2 text-sm font-medium text-gray-900 dark:text-white">State:</label>
-                        <input formControlName="state" type="state" id="state" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    </div>
-                    <div>
-                        <label for="pin" class="mb-2 text-sm font-medium text-gray-900 dark:text-white">Pin:</label>
-                        <input formControlName="pin" type="pin" id="pin" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    </div>
+            <!--! gender & age -->
+            <div class="mb-5 flex gap-4">
+                <!--? gender -->
+                <div class="w-full">
+                    <label for="gender" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Select gender
+                    </label>
+                    <select formControlName="gender" id="gender" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <!-- <option value="#">Select Gender</option> -->
+                        <option value="MALE">Male</option>
+                        <option value="FEMALE">Female</option>
+                        <option value="OTHER">Other</option>
+                    </select>
                 </div>
 
-                <div class="flex gap-4">
-                    <div>
-                        <label for="city" class="mb-2 text-sm font-medium text-gray-900 dark:text-white">City:</label>
-                        <input formControlName="city" type="city" id="city" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    </div>
-                    <div>
-                        <label for="landmark" class="mb-2 text-sm font-medium text-gray-900 dark:text-white">Landmark:</label>
-                        <input formControlName="landmark" type="landmark" id="landmark" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    </div>
+                <!--? age -->
+                <div class="w-full">
+                    <label for="age" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Your age
+                    </label>
+                    <input
+                        formControlName="age"
+                        type="number"
+                        id="age"
+                        class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    >
                 </div>
+            </div>
 
-                <div class="">
-                    <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Area:</label>
-                    <textarea formControlName="area" id="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your thoughts here..."></textarea>
-                </div>
+            <!--! Address Details -->
+            <div class="mb-5" formGroupName="address">
+                <fieldset class="border-2 p-4 rounded-md">
+                    <legend class="font-semibold px-1">Enter Address</legend>
+    
+                    <div class="mb-5 flex gap-4">
+                        <!--? age -->
+                        <div class="w-full">
+                            <label for="country" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Country
+                            </label>
+                            <input
+                                formControlName="country"
+                                type="country"
+                                id="country"
+                                class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            >
+                        </div>
 
+                        <!--? state -->
+                        <div class="w-full">
+                            <label for="state" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                State
+                            </label>
+                            <input
+                                formControlName="state"
+                                type="state"
+                                id="state"
+                                class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            >
+                        </div>
 
-            </fieldset>
-        </div>
+                    </div>
 
-        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-            Register
-        </button>
-    </form>
+                    <div class="mb-5 flex gap-4">
+                        <!--? city -->
+                        <div class="w-full">
+                            <label for="city" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                City
+                            </label>
+                            <input
+                                formControlName="city"
+                                type="city"
+                                id="city"
+                                class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            >
+                        </div>
+                        <!--? pin -->
+                        <div class="w-full">
+                            <label for="pin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Pin
+                            </label>
+                            <input
+                                formControlName="pin"
+                                type="pin"
+                                id="pin"
+                                class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            >
+                        </div>
+                    </div>
+
+                    <!--? area -->
+                    <div class="mb-5">
+                        <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            Area
+                        </label>
+                        <textarea
+                            formControlName="area"
+                            id="message"
+                            rows="4"
+                            placeholder="Write your area details here..."
+                            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        ></textarea>
+                    </div>
+
+                    <!--? landmark -->
+                    <div class="w-full">
+                        <label for="landmark" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            Landmark
+                        </label>
+                        <input
+                            formControlName="landmark"
+                            type="landmark"
+                            id="landmark"
+                            class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        >
+                    </div>
+                </fieldset>
+            </div>
+
+            <!--! password -->
+            <div class="mb-5">
+                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    Your password
+                    </label>
+                <input
+                    formControlName="password"
+                    type="password"
+                    id="password"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                >
+            </div>
+
+            <button [disabled]="!registerForm.valid" type="submit" class="disabled:cursor-not-allowed disabled:bg-gray-400 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                Register
+            </button>
+            <!-- <button (click)="onSubmit()">test</button> -->
+
+            <!--! register link -->
+            <p class="text-xs text-gray-600 my-2">
+                Already a user? Login <a routerLink="/login" class="text-blue-600">here</a>
+            </p>
+
+        </form>
+    </main>
 </div>
-
-  
