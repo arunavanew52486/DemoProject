@@ -21,23 +21,23 @@
       }
     },
     {
-      "email": "arunava52486@gmail.com",
-      "mobile": "08250993877",
+      "email": "demo@mail",
+      "mobile": "2222222222",
       "name": {
-        "firstName": "Arunava",
-        "lastName": "Das"
+        "firstName": "Arunvav",
+        "lastName": "sds"
       },
-      "gender": "MALE",
-      "age": "23",
+      "gender": null,
+      "age": null,
       "address": {
-        "country": "India",
-        "state": "WEST BENGAL",
-        "pin": "2423423",
-        "city": "PURBA BARDHAMAN",
-        "landmark": "Near High School",
-        "area": "asdf asdfa fdsafdga"
+        "country": null,
+        "state": null,
+        "pin": null,
+        "city": null,
+        "landmark": null,
+        "area": null
       },
-      "password": "65yy64y4554y",
+      "password": "ddffes",
       "id": 2
     }
   ]

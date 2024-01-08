@@ -1,12 +1,18 @@
 <div id="container" class="grid grid-cols-12">
     <main class="col-span-10 col-start-2 md:col-span-8 md:col-start-3 lg:col-span-6 lg:col-start-4 bg-white p-8 my-10 rounded-md drop-shadow-xl">
+        
         <h1 class="text-3xl text-center mb-4 font-semibold">Register User</h1>
+
+        <p class="text-xs text-right italic text-gray-600">
+            All <span class="font-semibold text-lg">*</span> fields are mandatory
+        </p>
+
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
-            <!--! email -->
+            <!--! email ------------------------------------------------------->
             <div class="mb-5">
                 <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                    Your email
+                    *Your email
                 </label>
                 <input
                     formControlName="email"
@@ -15,13 +21,28 @@
                     placeholder="name@demo.com"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 >
+                <!--* validation for email -->
+                <span
+                    *ngIf="registerForm && registerForm.get('email')!.errors && (registerForm.get('email')!.dirty || registerForm.get('email')!.touched)"
+                    class="text-red-500 text-xs"
+                >
+                    <span *ngIf="registerForm.get('email')?.errors!['required']">
+                        Email is required
+                    </span>
+                    <span *ngIf="registerForm.get('email')?.errors!['email']">
+                        Please enter a valid email
+                    </span>
+                </span>
             </div>
     
-            <!--! first & last name -->
+
+
+            <!--! first & last name --------------------------------------------------------->
             <div class="mb-5 md:flex gap-4" formGroupName="name">
+                <!--? first name ------------------------------------>
                 <div class="w-full">
                     <label for="firstName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                        First Name
+                        *First Name
                     </label>
                     <input
                         formControlName="firstName"
@@ -29,10 +50,24 @@
                         id="firstName"
                         class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     >
+                    <!--* validation for first name -->
+                    <span
+                        *ngIf="registerForm && registerForm.get('name')!.get('firstName')!.errors && (registerForm.get('name')!.get('firstName')!.dirty || registerForm.get('name')!.get('firstName')!.touched)"
+                        class="text-red-500 text-xs"
+                    >
+                        <span *ngIf="registerForm.get('name')!.get('firstName')?.errors!['required']">
+                            First name is required
+                        </span>
+                        <span *ngIf="registerForm.get('name')!.get('firstName')?.errors!['pattern']">
+                            Please enter a valid name
+                        </span>
+                    </span>
                 </div>
+
+                <!--? last name ------------------------------------->
                 <div class="w-full">
                     <label for="lastName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                        Last Name
+                        *Last Name
                     </label>
                     <input
                         formControlName="lastName"
@@ -40,13 +75,27 @@
                         id="lastName"
                         class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     >
+                    <!--* validation for last name -->
+                    <span
+                        *ngIf="registerForm && registerForm.get('name')!.get('lastName')!.errors && (registerForm.get('name')!.get('lastName')!.dirty || registerForm.get('name')!.get('lastName')!.touched)"
+                        class="text-red-500 text-xs"
+                    >
+                        <span *ngIf="registerForm.get('name')!.get('lastName')?.errors!['required']">
+                            First name is required
+                        </span>
+                        <span *ngIf="registerForm.get('name')!.get('lastName')?.errors!['pattern']">
+                            Please enter a valid name
+                        </span>
+                    </span>
                 </div>
             </div>
     
-            <!--! mobile -->
+
+
+            <!--! mobile --------------------------------------------------------------->
             <div class="mb-5">
                 <label for="mobile" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                    Your mobile
+                    *Your mobile
                 </label>
                 <input
                     formControlName="mobile"
@@ -54,11 +103,33 @@
                     id="mobile"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 >
+                <!--* validation for mobile number -->
+                <span
+                    *ngIf="registerForm && registerForm.get('mobile')!.errors && (registerForm.get('mobile')!.dirty || registerForm.get('mobile')!.touched)"
+                    class="text-red-500 text-xs"
+                >
+                    <span *ngIf="registerForm.get('mobile')?.errors!['required']">
+                        Mobile number is required
+                    </span>
+                    <span *ngIf="((registerForm.get('mobile')?.errors!['minlength'] || registerForm.get('mobile')?.errors!['maxlength']) && (registerForm.get('mobile')?.errors!['pattern']));else elseBlock">
+                        Please enter a valid Mobile number
+                    </span>
+                    <ng-template #elseBlock>
+                        <span *ngIf="registerForm.get('mobile')?.errors!['minlength'] || registerForm.get('mobile')?.errors!['maxlength']">
+                            Mobile number should contain 10 digits only
+                        </span>
+                        <span *ngIf="registerForm.get('mobile')?.errors!['pattern']">
+                            Please enter a valid Mobile number
+                        </span>
+                    </ng-template>
+                </span>
             </div>
 
-            <!--! gender & age -->
+
+
+            <!--! gender & age ------------------------------------------------------------>
             <div class="mb-5 flex gap-4">
-                <!--? gender -->
+                <!--? gender --------------------------------->
                 <div class="w-full">
                     <label for="gender" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Select gender
@@ -71,7 +142,7 @@
                     </select>
                 </div>
 
-                <!--? age -->
+                <!--? age ------------------------------------>
                 <div class="w-full">
                     <label for="age" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Your age
@@ -82,16 +153,30 @@
                         id="age"
                         class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     >
+                    <!--* validation for age -->
+                    <span
+                        *ngIf="registerForm && registerForm.get('age')!.errors && (registerForm.get('age')!.dirty || registerForm.get('age')!.touched)"
+                        class="text-red-500 text-xs"
+                    >
+                        <span *ngIf="registerForm.get('age')?.errors!['min']">
+                            Age can not be less than 0
+                        </span>
+                        <span *ngIf="registerForm.get('age')?.errors!['max']">
+                            Age can not be more than 150
+                        </span>
+                    </span>
                 </div>
             </div>
 
-            <!--! Address Details -->
+
+
+            <!--! Address Details ------------------------------------------------------->
             <div class="mb-5" formGroupName="address">
                 <fieldset class="border-2 p-4 rounded-md">
                     <legend class="font-semibold px-1">Enter Address</legend>
     
                     <div class="mb-5 flex gap-4">
-                        <!--? age -->
+                        <!--? country ---------------------------->
                         <div class="w-full">
                             <label for="country" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                 Country
@@ -102,9 +187,18 @@
                                 id="country"
                                 class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             >
+                            <!--* validation for country -->
+                            <span
+                                *ngIf="registerForm && registerForm.get('address')!.get('country')!.errors && (registerForm.get('address')!.get('country')!.dirty || registerForm.get('address')!.get('country')!.touched)"
+                                class="text-red-500 text-xs"
+                            >
+                                <span *ngIf="registerForm.get('address')!.get('country')?.errors!['pattern']">
+                                    Please enter a valid country name
+                                </span>
+                            </span>
                         </div>
 
-                        <!--? state -->
+                        <!--? state ------------------------------->
                         <div class="w-full">
                             <label for="state" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                 State
@@ -115,12 +209,21 @@
                                 id="state"
                                 class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             >
+                            <!--* validation for state -->
+                            <span
+                                *ngIf="registerForm && registerForm.get('address')!.get('state')!.errors && (registerForm.get('address')!.get('state')!.dirty || registerForm.get('address')!.get('state')!.touched)"
+                                class="text-red-500 text-xs"
+                            >
+                                <span *ngIf="registerForm.get('address')!.get('state')?.errors!['pattern']">
+                                    Please enter a valid state name
+                                </span>
+                            </span>
                         </div>
 
                     </div>
 
                     <div class="mb-5 flex gap-4">
-                        <!--? city -->
+                        <!--? city ------------------------------------>
                         <div class="w-full">
                             <label for="city" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                 City
@@ -131,8 +234,18 @@
                                 id="city"
                                 class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             >
+                            <!--* validation for city -->
+                            <span
+                                *ngIf="registerForm && registerForm.get('address')!.get('city')!.errors && (registerForm.get('address')!.get('city')!.dirty || registerForm.get('address')!.get('city')!.touched)"
+                                class="text-red-500 text-xs"
+                            >
+                                <span *ngIf="registerForm.get('address')!.get('city')?.errors!['pattern']">
+                                    Please enter a valid city name
+                                </span>
+                            </span>
                         </div>
-                        <!--? pin -->
+
+                        <!--? pin ------------------------------------>
                         <div class="w-full">
                             <label for="pin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                 Pin
@@ -143,10 +256,27 @@
                                 id="pin"
                                 class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             >
+                            <!--* validation for pin -->
+                            <span
+                                *ngIf="registerForm && registerForm.get('address')!.get('pin')!.errors && (registerForm.get('address')!.get('pin')!.dirty || registerForm.get('address')!.get('pin')!.touched)"
+                                class="text-red-500 text-xs"
+                            >
+                                <span *ngIf="((registerForm.get('address')!.get('pin')?.errors!['minlength'] || registerForm.get('address')!.get('pin')?.errors!['maxlength']) && (registerForm.get('address')!.get('pin')?.errors!['pattern']));else elseBlock">
+                                    Please enter a valid pin
+                                </span>
+                                <ng-template #elseBlock>
+                                    <span *ngIf="registerForm.get('address')!.get('pin')?.errors!['minlength'] || registerForm.get('address')!.get('pin')?.errors!['maxlength']">
+                                        Pin should contain 6 digits
+                                    </span>
+                                    <span *ngIf="registerForm.get('address')!.get('pin')?.errors!['pattern']">
+                                        Please enter a valid Pin
+                                    </span>
+                                </ng-template>
+                            </span>
                         </div>
                     </div>
 
-                    <!--? area -->
+                    <!--? area --------------------------------------->
                     <div class="mb-5">
                         <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                             Area
@@ -158,9 +288,21 @@
                             placeholder="Write your area details here..."
                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         ></textarea>
+                        <!--* validation for area -->
+                        <span
+                            *ngIf="registerForm && registerForm.get('address')!.get('area')!.errors && (registerForm.get('address')!.get('area')!.dirty || registerForm.get('address')!.get('area')!.touched)"
+                            class="text-red-500 text-xs"
+                        >
+                            <span *ngIf="registerForm.get('address')!.get('area')?.errors!['pattern']">
+                                Area should contain 'letter', ',' & '.' only
+                            </span>
+                            <span *ngIf="registerForm.get('address')!.get('area')?.errors!['maxlength']">
+                                Area details are too long
+                            </span>
+                        </span>
                     </div>
 
-                    <!--? landmark -->
+                    <!--? landmark ---------------------------------------->
                     <div class="w-full">
                         <label for="landmark" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                             Landmark
@@ -171,14 +313,28 @@
                             id="landmark"
                             class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         >
+                        <!--* validation for landmark -->
+                        <span
+                            *ngIf="registerForm && registerForm.get('address')!.get('landmark')!.errors && (registerForm.get('address')!.get('landmark')!.dirty || registerForm.get('address')!.get('landmark')!.touched)"
+                            class="text-red-500 text-xs"
+                        >
+                            <span *ngIf="registerForm.get('address')!.get('landmark')?.errors!['pattern']">
+                                Landmark should contain 'letter' & ',' only
+                            </span>
+                            <!-- <span *ngIf="registerForm.get('address')!.get('landmark')?.errors!['maxlength']">
+                                Area details are too long
+                            </span> -->
+                        </span>
                     </div>
                 </fieldset>
             </div>
 
-            <!--! password -->
+
+
+            <!--! password -------------------------------------------------------------------->
             <div class="mb-5">
                 <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                    Your password
+                    *Password
                     </label>
                 <input
                     formControlName="password"
@@ -187,6 +343,12 @@
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 >
             </div>
+
+
+
+            <!-- <p class="text-xs text-gray-600 my-2">
+                All * fields are mandatory
+            </p> -->
 
             <button [disabled]="!registerForm.valid" type="submit" class="disabled:cursor-not-allowed disabled:bg-gray-400 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                 Register
