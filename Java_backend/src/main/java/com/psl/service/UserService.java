@@ -20,7 +20,7 @@ public class UserService {
     }
 
     public User findUser(UserLoginDetails user) throws NoSuchElementException {
-            return repository.findById(user.getEmail()).get();
+        return repository.findById(user.getEmail()).get();
     }
 
     public List<User> getAllUser(){

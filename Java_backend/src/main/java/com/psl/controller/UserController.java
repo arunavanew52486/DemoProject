@@ -24,14 +24,18 @@ public class UserController {
     @GetMapping("/login")
     public ResponseEntity<?> userLogin(@RequestBody UserLoginDetails user){
         try {
-            if (userService.findUser(user) != null) {
-                return new ResponseEntity<>(HttpStatus.OK);
+            User userToFind=userService.findUser(user);
+            if(userToFind.getEmail().equals(user.getEmail()) && userToFind.getPassword().equals(user.getPassword())) {
+                return new ResponseEntity<>("Logged in successfully",HttpStatus.OK);
+            }
+            else if(userToFind.getEmail().equals(user.getEmail()) && ! userToFind.getPassword().equals(user.getPassword())){
+                    return new ResponseEntity<>("Wrong Credentials",HttpStatus.UNAUTHORIZED);
             }
         }
-        catch(Exception e){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        catch(Exception e) {
+            return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
     }
 
     @GetMapping("/getalluser")
