@@ -5,16 +5,28 @@ import jakarta.persistence.Embeddable;
 @Embeddable
 public class Address {
     private String country;
+
+    private String state;
     private String pin;
     private String city;
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
     private String area;
     private String landmark;
 
     public Address() {
     }
 
-    public Address(String country, String pin, String city, String area, String landmark) {
+    public Address(String country, String state, String pin, String city, String area, String landmark) {
         this.country = country;
+        this.state = state;
         this.pin = pin;
         this.city = city;
         this.area = area;

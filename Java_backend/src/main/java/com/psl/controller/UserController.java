@@ -27,7 +27,10 @@ public class UserController {
         try {
             User userToFind=userService.findUser(user);
             if(userToFind.getEmail().equals(user.getEmail()) && userToFind.getPassword().equals(user.getPassword())) {
-                return new ResponseEntity<>("Logged in successfully",HttpStatus.OK);
+//                return ResponseEntity.status(HttpStatus.OK).body("{message: Logged in successfully}");
+//                 return new ResponseEntity<>(userToFind.getEmail(),HttpStatus.OK);
+                return ResponseEntity.status(HttpStatus.OK)
+                        .body("{\"email\": \"" + userToFind.getEmail() + "\", \"status\": \"" + HttpStatus.OK + "\"}");
             }
             else if(userToFind.getEmail().equals(user.getEmail()) && ! userToFind.getPassword().equals(user.getPassword())){
                     return new ResponseEntity<>("Wrong Credentials",HttpStatus.UNAUTHORIZED);
