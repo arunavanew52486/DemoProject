@@ -1,0 +1,23 @@
+<div id="container">
+    <main>
+        <div>
+            <img src="" alt="">
+        </div>
+        <div>
+            <h1>User Name: {{ user?.name?.firstName }} {{ user?.name?.lastName }}</h1>
+            <h1>Email: {{ user?.email }}</h1>
+            <h1>Age: {{ user?.age }}</h1>
+            <h1>Gender: {{ user?.gender }}</h1>
+            <h1>Mobile: {{ user?.mobileNumber }}</h1>
+            <div>
+                <h1>Address:</h1>
+                <h2>Country: {{ user?.address?.country }}</h2>
+                <h2>State: {{ user?.address?.state }}</h2>
+                <h2>City: {{ user?.address?.city }}</h2>
+                <h2>PIN: {{ user?.address?.pin }}</h2>
+                <h2>Landmark: {{ user?.address?.landmark }}</h2>
+                <h2>Area: {{ user?.address?.area }}</h2>
+            </div>
+        </div>
+    </main>
+</div>

@@ -29,7 +29,7 @@ export class RegisterComponent {
                 city: new FormControl(null, [Validators.pattern(/^[A-Za-z\s]*$/), Validators.maxLength(25)]),
                 pin: new FormControl(null, [Validators.minLength(6), Validators.maxLength(6), Validators.pattern(/^[0-9]*$/)]),
                 area: new FormControl(null, [Validators.pattern(/^[A-Za-z\s,.]*$/), Validators.maxLength(100)]),
-                landmark: new FormControl(null, [Validators.pattern(/^[A-Za-z\s,]*$/), Validators.maxLength(25)]),
+                landmark: new FormControl(null, [Validators.pattern(/^[A-Za-z\s,]*$/), Validators.maxLength(50)]),
             }),
             password: new FormControl(null, [Validators.required, Validators.maxLength(50)])
             // password: new FormControl(null, Validators.compose([Validators.pattern(/^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$-_])[0-9a-zA-Z!@#$-_]*$/)]))
