@@ -9,8 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 @CrossOrigin(origins = "*", allowedHeaders = "*")
+
 @RestController
 public class UserController {
 
@@ -27,8 +27,6 @@ public class UserController {
         try {
             User userToFind=userService.findUser(user);
             if(userToFind.getEmail().equals(user.getEmail()) && userToFind.getPassword().equals(user.getPassword())) {
-//                return ResponseEntity.status(HttpStatus.OK).body("{message: Logged in successfully}");
-//                 return new ResponseEntity<>(userToFind.getEmail(),HttpStatus.OK);
                 return ResponseEntity.status(HttpStatus.OK)
                         .body("{\"email\": \"" + userToFind.getEmail() + "\", \"status\": \"" + HttpStatus.OK + "\"}");
             }
