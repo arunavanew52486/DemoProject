@@ -23,12 +23,8 @@ export class LoginComponent {
     onSubmit() {
         // console.log(this.loginForm.value)
         this._httpLogin.login(this.loginForm.value).subscribe((data) => {
-            console.log(data);
-            // this._router.navigateByUrl('/userDetails');
-        //     this._httpUser.getUserByEmail(this.loginForm.value!.email).subscribe((user) => {
-        //         console.log(user)
-        //     })
-            // this._httpUser.getUserByEmail(this.loginForm.value!.email).subscribe((user) => {console.log(user)})
+            localStorage.setItem('email', this.loginForm.value.email );
+            this._router.navigateByUrl('/userDetails');
         })
     }
 }

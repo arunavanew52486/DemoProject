@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -8,22 +10,25 @@ import { UserService } from '../services/user.service';
 })
 export class UserDetailsComponent {
     user: any;
-    
-    email = 'arunava@gmail.com';
+    email: string|null;
 
-    constructor(private _httpUserService: UserService) {
-        // this._httpUserService.getUserByEmail(this.email);
+    constructor(private _router: Router, private _httpUserService: UserService) {
+        this.email = localStorage.getItem('email');
+    }
+
+    ngOnInit(): void {
         this._httpUserService.getUserByEmail(this.email).subscribe((data) => {
-            // console.log(data);
             this.user = data;
-            console.log(this.user);
         })
     }
 
-    onInit() {
-        // this._httpUserService.getUserByEmail(this.email).subscribe((data) => {
-        //     console.log(data);
-        // })
-        // this._httpUserService.getUserByEmail(this.email);
+    logout() {
+        this.email = null;
+        this.user = null;
+        this._httpUserService.logout();
+    }
+
+    navigate(route: string) {
+        this._router.navigateByUrl(route);
     }
 }

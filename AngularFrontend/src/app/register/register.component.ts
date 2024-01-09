@@ -32,36 +32,14 @@ export class RegisterComponent {
                 landmark: new FormControl(null, [Validators.pattern(/^[A-Za-z\s,]*$/), Validators.maxLength(50)]),
             }),
             password: new FormControl(null, [Validators.required, Validators.maxLength(50)])
-            // password: new FormControl(null, Validators.compose([Validators.pattern(/^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$-_])[0-9a-zA-Z!@#$-_]*$/)]))
-            // password: new FormControl(null, Validators.compose([Validators.required, Validators.pattern(/^[0-9]*$/), Validators.pattern(/^[a-zA-Z]*$/), this.containsSpecialCharacterValidator]))
         })
     }
 
-    // containsSpecialCharacterValidator(): ValidatorFn {
-    //     return (control: AbstractControl): { [key: string]: any } | null => {
-    //       const value = control.value;
-      
-    //       if (value === null || value === undefined || value === '') {
-    //         // Return null if the value is empty or undefined
-    //         return null;
-    //       }
-      
-    //       // Define an array of special characters
-    //       const specialCharacters = ['!', '@', '#', '$', '-', '_'];
-      
-    //       // Check if any special character is present in the value
-    //       const containsSpecialCharacter = specialCharacters.some(char => value.indexOf(char) !== -1);
-      
-    //       // If no special character is found, return an error object
-    //       return containsSpecialCharacter ? null : { noSpecialCharacter: true };
-    //     };
-    // }
-
     onSubmit() {
-        // console.log(this.registerForm)
-
-        this._httpRegister.login(this.registerForm.value);
-        this.registerForm.reset();
-        this._router.navigateByUrl('/');
+        this._httpRegister.register(this.registerForm.value).subscribe(data => {
+            console.log("Registered new User: ", data);
+            this.registerForm.reset();
+            this._router.navigateByUrl('/');
+        });
     }
 }
