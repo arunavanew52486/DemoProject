@@ -22,7 +22,7 @@ public class UserController {
         return userService.addUser(user);
     }
 
-    @GetMapping("/login")
+    @PostMapping("/login")
     public ResponseEntity<?> userLogin(@RequestBody UserLoginDetails user){
         try {
             User userToFind=userService.findUser(user);

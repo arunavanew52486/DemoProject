@@ -32,6 +32,9 @@
                     <span *ngIf="registerForm.get('email')?.errors!['email']">
                         Please enter a valid email
                     </span>
+                    <span *ngIf="registerForm.get('email')?.errors!['maxlength']">
+                        Email is too long
+                    </span>
                 </span>
             </div>
     
@@ -58,9 +61,20 @@
                         <span *ngIf="registerForm.get('name')!.get('firstName')?.errors!['required']">
                             First name is required
                         </span>
-                        <span *ngIf="registerForm.get('name')!.get('firstName')?.errors!['pattern']">
-                            Please enter a valid name
+                        <span *ngIf="((registerForm.get('name')!.get('firstName')?.errors!['minlength'] || registerForm.get('name')!.get('firstName')?.errors!['maxlength']) && (registerForm.get('name')!.get('firstName')?.errors!['pattern']));else elseBlock">
+                            Please enter a valid Name
                         </span>
+                        <ng-template #elseBlock>
+                            <span *ngIf="registerForm.get('name')!.get('firstName')?.errors!['minlength']">
+                                Name is too short
+                            </span>
+                            <span *ngIf="registerForm.get('name')!.get('firstName')?.errors!['maxlength']">
+                                Name is too long
+                            </span>
+                            <span *ngIf="registerForm.get('name')!.get('firstName')?.errors!['pattern']">
+                                Please enter a valid name
+                            </span>
+                        </ng-template>
                     </span>
                 </div>
 
@@ -83,9 +97,20 @@
                         <span *ngIf="registerForm.get('name')!.get('lastName')?.errors!['required']">
                             First name is required
                         </span>
-                        <span *ngIf="registerForm.get('name')!.get('lastName')?.errors!['pattern']">
-                            Please enter a valid name
+                        <span *ngIf="((registerForm.get('name')!.get('lastName')?.errors!['minlength'] || registerForm.get('name')!.get('lastName')?.errors!['maxlength']) && (registerForm.get('name')!.get('lastName')?.errors!['pattern']));else elseBlock">
+                            Please enter a valid Name
                         </span>
+                        <ng-template #elseBlock>
+                            <span *ngIf="registerForm.get('name')!.get('lastName')?.errors!['minlength']">
+                                Name is too short
+                            </span>
+                            <span *ngIf="registerForm.get('name')!.get('lastName')?.errors!['maxlength']">
+                                Name is too long
+                            </span>
+                            <span *ngIf="registerForm.get('name')!.get('lastName')?.errors!['pattern']">
+                                Please enter a valid name
+                            </span>
+                        </ng-template>
                     </span>
                 </div>
             </div>
@@ -192,9 +217,17 @@
                                 *ngIf="registerForm && registerForm.get('address')!.get('country')!.errors && (registerForm.get('address')!.get('country')!.dirty || registerForm.get('address')!.get('country')!.touched)"
                                 class="text-red-500 text-xs"
                             >
-                                <span *ngIf="registerForm.get('address')!.get('country')?.errors!['pattern']">
-                                    Please enter a valid country name
+                                <span *ngIf="(registerForm.get('address')!.get('country')?.errors!['maxlength'] && registerForm.get('address')!.get('country')?.errors!['pattern']);else elseBlock">
+                                    Please enter valid country name
                                 </span>
+                                <ng-template #elseBlock>
+                                    <span *ngIf="registerForm.get('address')!.get('country')?.errors!['maxlength']">
+                                        Country name is too long
+                                    </span>
+                                    <span *ngIf="registerForm.get('address')!.get('country')?.errors!['pattern']">
+                                        Please enter valid country name
+                                    </span>
+                                </ng-template>
                             </span>
                         </div>
 
@@ -214,9 +247,17 @@
                                 *ngIf="registerForm && registerForm.get('address')!.get('state')!.errors && (registerForm.get('address')!.get('state')!.dirty || registerForm.get('address')!.get('state')!.touched)"
                                 class="text-red-500 text-xs"
                             >
-                                <span *ngIf="registerForm.get('address')!.get('state')?.errors!['pattern']">
-                                    Please enter a valid state name
+                                <span *ngIf="(registerForm.get('address')!.get('state')?.errors!['maxlength'] && registerForm.get('address')!.get('state')?.errors!['pattern']);else elseBlock">
+                                    Please enter valid state name
                                 </span>
+                                <ng-template #elseBlock>
+                                    <span *ngIf="registerForm.get('address')!.get('state')?.errors!['maxlength']">
+                                        State name is too long
+                                    </span>
+                                    <span *ngIf="registerForm.get('address')!.get('state')?.errors!['pattern']">
+                                        Please enter valid state name
+                                    </span>
+                                </ng-template>
                             </span>
                         </div>
 
@@ -239,9 +280,17 @@
                                 *ngIf="registerForm && registerForm.get('address')!.get('city')!.errors && (registerForm.get('address')!.get('city')!.dirty || registerForm.get('address')!.get('city')!.touched)"
                                 class="text-red-500 text-xs"
                             >
-                                <span *ngIf="registerForm.get('address')!.get('city')?.errors!['pattern']">
-                                    Please enter a valid city name
+                                <span *ngIf="(registerForm.get('address')!.get('city')?.errors!['maxlength'] && registerForm.get('address')!.get('city')?.errors!['pattern']);else elseBlock">
+                                    Please enter valid city name
                                 </span>
+                                <ng-template #elseBlock>
+                                    <span *ngIf="registerForm.get('address')!.get('city')?.errors!['maxlength']">
+                                        City name is too long
+                                    </span>
+                                    <span *ngIf="registerForm.get('address')!.get('city')?.errors!['pattern']">
+                                        Please enter valid city name
+                                    </span>
+                                </ng-template>
                             </span>
                         </div>
 
@@ -293,12 +342,17 @@
                             *ngIf="registerForm && registerForm.get('address')!.get('area')!.errors && (registerForm.get('address')!.get('area')!.dirty || registerForm.get('address')!.get('area')!.touched)"
                             class="text-red-500 text-xs"
                         >
-                            <span *ngIf="registerForm.get('address')!.get('area')?.errors!['pattern']">
+                            <span *ngIf="(registerForm.get('address')!.get('area')?.errors!['maxlength'] && registerForm.get('address')!.get('area')?.errors!['pattern']);else elseBlock">
                                 Area should contain 'letter', ',' & '.' only
                             </span>
-                            <span *ngIf="registerForm.get('address')!.get('area')?.errors!['maxlength']">
-                                Area details are too long
-                            </span>
+                            <ng-template #elseBlock>
+                                <span *ngIf="registerForm.get('address')!.get('area')?.errors!['maxlength']">
+                                    Area details are too long
+                                </span>
+                                <span *ngIf="registerForm.get('address')!.get('area')?.errors!['pattern']">
+                                    Area should contain 'letter', ',' & '.' only
+                                </span>
+                            </ng-template>
                         </span>
                     </div>
 
@@ -314,16 +368,22 @@
                             class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         >
                         <!--* validation for landmark -->
+
                         <span
                             *ngIf="registerForm && registerForm.get('address')!.get('landmark')!.errors && (registerForm.get('address')!.get('landmark')!.dirty || registerForm.get('address')!.get('landmark')!.touched)"
                             class="text-red-500 text-xs"
                         >
-                            <span *ngIf="registerForm.get('address')!.get('landmark')?.errors!['pattern']">
+                            <span *ngIf="(registerForm.get('address')!.get('landmark')?.errors!['maxlength'] && registerForm.get('address')!.get('landmark')?.errors!['pattern']);else elseBlock">
                                 Landmark should contain 'letter' & ',' only
                             </span>
-                            <!-- <span *ngIf="registerForm.get('address')!.get('landmark')?.errors!['maxlength']">
-                                Area details are too long
-                            </span> -->
+                            <ng-template #elseBlock>
+                                <span *ngIf="registerForm.get('address')!.get('landmark')?.errors!['maxlength']">
+                                    Landmark is too long
+                                </span>
+                                <span *ngIf="registerForm.get('address')!.get('landmark')?.errors!['pattern']">
+                                    Landmark should contain 'letter' & ',' only
+                                </span>
+                            </ng-template>
                         </span>
                     </div>
                 </fieldset>
