@@ -123,27 +123,27 @@
                     *Your mobile
                 </label>
                 <input
-                    formControlName="mobile"
+                    formControlName="mobileNumber"
                     type="text"
                     id="mobile"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 >
                 <!--* validation for mobile number -->
                 <span
-                    *ngIf="registerForm && registerForm.get('mobile')!.errors && (registerForm.get('mobile')!.dirty || registerForm.get('mobile')!.touched)"
+                    *ngIf="registerForm && registerForm.get('mobileNumber')!.errors && (registerForm.get('mobileNumber')!.dirty || registerForm.get('mobileNumber')!.touched)"
                     class="text-red-500 text-xs"
                 >
-                    <span *ngIf="registerForm.get('mobile')?.errors!['required']">
+                    <span *ngIf="registerForm.get('mobileNumber')?.errors!['required']">
                         Mobile number is required
                     </span>
-                    <span *ngIf="((registerForm.get('mobile')?.errors!['minlength'] || registerForm.get('mobile')?.errors!['maxlength']) && (registerForm.get('mobile')?.errors!['pattern']));else elseBlock">
+                    <span *ngIf="((registerForm.get('mobileNumber')?.errors!['minlength'] || registerForm.get('mobileNumber')?.errors!['maxlength']) && (registerForm.get('mobileNumber')?.errors!['pattern']));else elseBlock">
                         Please enter a valid Mobile number
                     </span>
                     <ng-template #elseBlock>
-                        <span *ngIf="registerForm.get('mobile')?.errors!['minlength'] || registerForm.get('mobile')?.errors!['maxlength']">
+                        <span *ngIf="registerForm.get('mobileNumber')?.errors!['minlength'] || registerForm.get('mobileNumber')?.errors!['maxlength']">
                             Mobile number should contain 10 digits only
                         </span>
-                        <span *ngIf="registerForm.get('mobile')?.errors!['pattern']">
+                        <span *ngIf="registerForm.get('mobileNumber')?.errors!['pattern']">
                             Please enter a valid Mobile number
                         </span>
                     </ng-template>

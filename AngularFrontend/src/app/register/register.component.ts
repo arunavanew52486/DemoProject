@@ -20,7 +20,7 @@ export class RegisterComponent {
                 firstName: new FormControl(null, [Validators.required, Validators.pattern(/^[A-Za-z]*$/), Validators.minLength(2), Validators.maxLength(50)]),
                 lastName: new FormControl(null, [Validators.required, Validators.pattern(/^[A-Za-z]*$/), Validators.minLength(2), Validators.maxLength(50)]),
             }),
-            mobile: new FormControl(null, [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^[0-9]*$/)]),
+            mobileNumber: new FormControl(null, [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^[0-9]*$/)]),
             gender: new FormControl(null),
             age: new FormControl(null, [Validators.min(0), Validators.max(150)]),
             address: new FormGroup({
@@ -28,8 +28,8 @@ export class RegisterComponent {
                 state: new FormControl(null, [Validators.pattern(/^[A-Za-z\s]*$/), Validators.maxLength(25)]),
                 city: new FormControl(null, [Validators.pattern(/^[A-Za-z\s]*$/), Validators.maxLength(25)]),
                 pin: new FormControl(null, [Validators.minLength(6), Validators.maxLength(6), Validators.pattern(/^[0-9]*$/)]),
-                area: new FormControl(null, [Validators.pattern(/^[A-Za-z\s,.]*$/), Validators.maxLength(100)]),
-                landmark: new FormControl(null, [Validators.pattern(/^[A-Za-z\s,]*$/), Validators.maxLength(25)]),
+                area: new FormControl(null, [Validators.pattern(/^[A-Za-z\s:,.-]*$/), Validators.maxLength(100)]),
+                landmark: new FormControl(null, [Validators.pattern(/^[A-Za-z\s,]*$/), Validators.maxLength(50)]),
             }),
             password: new FormControl(null, [Validators.required, Validators.maxLength(50)])
             // password: new FormControl(null, Validators.compose([Validators.pattern(/^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$-_])[0-9a-zA-Z!@#$-_]*$/)]))
