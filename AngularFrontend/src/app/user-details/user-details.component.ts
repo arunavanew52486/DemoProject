@@ -11,6 +11,11 @@ import { UserService } from '../services/user.service';
 export class UserDetailsComponent {
     user: any;
     email: string|null;
+    profilepic = {
+        user: 'assets/gifs/user.gif',
+        male: 'assets/gifs/male.gif',
+        female: 'assets/gifs/female.gif'
+    }
 
     constructor(private _router: Router, private _httpUserService: UserService) {
         this.email = localStorage.getItem('email');
@@ -30,5 +35,17 @@ export class UserDetailsComponent {
 
     navigate(route: string) {
         this._router.navigateByUrl(route);
+    }
+
+    selectPic(gender: string) {
+        switch (gender) {
+            case 'MALE':
+                return this.profilepic.male;
+            case 'FEMALE':
+                return this.profilepic.female;
+        
+            default:
+                return this.profilepic.user;
+        }
     }
 }

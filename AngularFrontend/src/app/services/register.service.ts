@@ -11,7 +11,6 @@ export class RegisterService {
     constructor(private _http: HttpClient) {}
 
     register(data: any) {
-        // console.log(data);
         return this._http.post(this.URL, data);
     }
 }
