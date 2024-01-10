@@ -1,20 +1,31 @@
 package com.psl.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
+import org.hibernate.validator.constraints.Range;
 
 @Entity
 public class User {
     @Id
+    @NotBlank(message = "Email is mandatory")
+    @Size(max=150)
+    @Email
     private String email;
+    @NotBlank(message = "Password is mandatory")
+    @Pattern(regexp = "[a-zA-Z0-9!@#$%^&*:.~]{0,50}$")
     private String password;
     @Embedded
-    private Name name;
+    private @Valid Name name;
+    @NotBlank(message = "Mobile Number is mandatory")
+    @Pattern(regexp = "[0-9]{10}$")
     private String mobileNumber;
+    @Range(min =0,max = 150)
     private Integer age;
     @Enumerated(EnumType.STRING)
     private Gender gender;
     @Embedded
-    private Address address;
+    private @Valid Address address;
 
     public User() {
     }

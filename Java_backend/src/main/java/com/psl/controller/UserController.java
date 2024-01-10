@@ -3,6 +3,7 @@ package com.psl.controller;
 import com.psl.model.User;
 import com.psl.model.UserLoginDetails;
 import com.psl.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,12 +19,12 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/register")
-    public User addUser(@RequestBody User user){
+    public User addUser(@RequestBody @Valid User user){
         return userService.addUser(user);
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> userLogin(@RequestBody UserLoginDetails user){
+    public ResponseEntity<?> userLogin(@RequestBody @Valid UserLoginDetails user){
         try {
             User userToFind=userService.findUser(user);
             if(userToFind.getEmail().equals(user.getEmail()) && userToFind.getPassword().equals(user.getPassword())) {
@@ -46,5 +47,5 @@ public class UserController {
     }
 
     @GetMapping("/getuser/{email}")
-    public User getUserById(@PathVariable String email){return userService.getUserById(email);}
+    public User getUserById(@PathVariable @Valid String email){return userService.getUserById(email);}
 }
