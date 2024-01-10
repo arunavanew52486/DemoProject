@@ -10,7 +10,7 @@
             <h1>Gender: {{ user?.gender }}</h1>
             <h1>Mobile: {{ user?.mobileNumber }}</h1>
             <div>
-                <h1>Address:</h1>
+                <h1>Address:--</h1>
                 <h2>Country: {{ user?.address?.country }}</h2>
                 <h2>State: {{ user?.address?.state }}</h2>
                 <h2>City: {{ user?.address?.city }}</h2>
@@ -21,3 +21,7 @@
         </div>
     </main>
 </div>
+
+<button (click)="navigate('')">Home</button>
+<button (click)="logout()">Logout</button>
+<!-- <button>All users</button> -->

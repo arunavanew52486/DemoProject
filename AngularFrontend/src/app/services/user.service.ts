@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -7,14 +8,14 @@ import { Injectable } from '@angular/core';
 export class UserService {
     URL = 'http://localhost:8080/getuser';
 
-    constructor(private _http: HttpClient) {}
+    constructor(private _http: HttpClient, private _router: Router) {}
 
-    getUserByEmail(email: string) {
-        // console.log(email)
-        // return this._http.get(`${this.URL}/${email}`).subscribe((data) => {
-        //     console.log(data);
-        // })
+    getUserByEmail(email: string|null) {
         return this._http.get(`${this.URL}/${email}`);
-        // console.log((`${this.URL}/${email}`))
+    }
+
+    logout() {
+        localStorage.clear();
+        this._router.navigateByUrl('');
     }
 }

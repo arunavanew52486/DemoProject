@@ -10,10 +10,8 @@ export class RegisterService {
 
     constructor(private _http: HttpClient) {}
 
-    login(data: any) {
+    register(data: any) {
         // console.log(data);
-        this._http.post(this.URL, data).subscribe(data => {
-            console.log("Registered new User: ", data);
-        })
+        return this._http.post(this.URL, data);
     }
 }
