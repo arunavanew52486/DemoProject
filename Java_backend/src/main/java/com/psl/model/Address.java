@@ -1,14 +1,25 @@
 package com.psl.model;
 
 import jakarta.persistence.Embeddable;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 
 @Embeddable
 public class Address {
+    @Pattern(regexp = "[a-zA-Z ]{0,25}$")
     private String country;
-
+    @Pattern(regexp = "[a-zA-Z ]{0,25}$")
     private String state;
+    @Pattern(regexp = "[0-9]{6}$")
     private String pin;
+    @Pattern(regexp = "[a-zA-Z ]{0,25}$")
     private String city;
+    @Pattern(regexp = "[a-zA-Z0-9!@#$%^&*:., -]{0,100}$")
+    private String area;
+    @Pattern(regexp = "[a-zA-Z0-9!@#$%^&*:., ]{0,50}$")
+    private String landmark;
 
     public String getState() {
         return state;
@@ -17,9 +28,6 @@ public class Address {
     public void setState(String state) {
         this.state = state;
     }
-
-    private String area;
-    private String landmark;
 
     public Address() {
     }
