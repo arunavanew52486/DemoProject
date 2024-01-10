@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { LoginService } from '../services/login.service';
-import { UserService } from '../services/user.service';
+// import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,7 @@ import { UserService } from '../services/user.service';
 export class LoginComponent {
     loginForm: FormGroup;
 
-    constructor(private _httpLogin: LoginService, private _router: Router, private _httpUser: UserService) {
+    constructor(private _httpLogin: LoginService, private _router: Router) {
         this.loginForm = new FormGroup({
             email: new FormControl(null, [Validators.required, Validators.email]),
             password: new FormControl(null, Validators.required)
