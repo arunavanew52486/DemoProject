@@ -11,13 +11,13 @@ Testing: Mockito
 - ***Testing:*** JEST
 
 ### How to run?
-	- Go to the ***/AngularFrontend*** folder.
- 	- Open the terminal (make sure nodejs & angular is installed)
-	- run ***npm i***
- 	- run ***ng serve***
+- Go to the ***/AngularFrontend*** folder.
+- Open the terminal (make sure nodejs & angular is installed)
+- run ***npm i***
+- run ***ng serve***
 	
 ### How to run test cases?
-	-Go to the ***/AngularFrontend*** folder.
- 	-Open the terminal (make sure nodejs & angular is installed)
-	-run ***npm i***
- 	-run ***npm test***
+- Go to the ***/AngularFrontend*** folder.
+- Open the terminal (make sure nodejs & angular is installed)
+- run ***npm i***
+- run ***npm test***
