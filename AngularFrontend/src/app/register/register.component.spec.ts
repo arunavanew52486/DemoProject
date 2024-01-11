@@ -26,6 +26,7 @@ describe('RegisterComponent', () => {
         fixture.detectChanges();
     });
 
+    //! TEST 1 ---------------------
     it('should create register component', () => {
         expect(component).toBeTruthy();
     });

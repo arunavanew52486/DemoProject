@@ -8,14 +8,20 @@ describe('ErrorComponent', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-        declarations: [ErrorComponent]
+            declarations: [ErrorComponent]
         });
         fixture = TestBed.createComponent(ErrorComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });
 
+    //! TEST 1 ---------------------------
     it('should create error component', () => {
         expect(component).toBeTruthy();
+    });
+
+    //! TEST 2 ---------------------------
+    it(`should show the error message as 'Page Not Found'`, () => {
+        expect(component.errorMessage).toEqual('Page Not Found');
     });
 });
