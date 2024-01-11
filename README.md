@@ -1,8 +1,8 @@
 # DemoProject
 
 ## Java Backend
-Spring Boot
-Testing: Mockito
+- Spring Boot App
+- Testing: Mockito
 
 ## Angular Frontend
 ### Technologies used:
@@ -14,7 +14,7 @@ Testing: Mockito
 - Go to the ***/AngularFrontend*** folder.
 - Open the terminal (make sure nodejs & angular is installed)
 - run ***npm i***
-- run ***ng serve***
+- run ***ng serve*** or ***npm start***
 	
 ### How to run test cases?
 - Go to the ***/AngularFrontend*** folder.
