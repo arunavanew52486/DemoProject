@@ -6,9 +6,9 @@ Testing: Mockito
 
 ## Angular Frontend
 ### Technologies used:
-	-***Frontend Framework:*** Angular
- 	-***Styling:*** Tailwind CSS, Flowbite
-	-***Testing:*** JEST
+-***Frontend Framework:*** Angular
+-***Styling:*** Tailwind CSS, Flowbite
+-***Testing:*** JEST
 
 ### How to run?
 	-Go to the ***/AngularFrontend*** folder.
