@@ -23,50 +23,61 @@ describe('LoginService', () => {
         httpTestingController.verify();
     });
     
+    //! TEST 1 ---------------------------
     it('should be created: login service', () => {
         expect(service).toBeTruthy();
     });
     
-    // it('should send a POST request with login data', fakeAsync(() => {
-    //     const mockLoginData = { username: 'testuser', password: 'testpassword' };
-    //     const mockResponse = { success: true, token: 'mockToken' };
+    //! TEST 2 ---------------------------
+    it('LoginService: should send a POST request with login data', fakeAsync(() => {
+        const URL = 'http://localhost:8080/login';
+
+        const mockLoginData = { email: 'arunava@gmail.com', password: '12345' };
+        const mockResponse = { "email": "arunava@gmail.com", "status": "200 OK" };
     
-    //     // Make the HTTP POST request
-    //     service.login(mockLoginData).subscribe((response) => {
-    //     expect(response).toEqual(mockResponse);
-    //     });
+        //! Make the HTTP POST request
+        service.login(mockLoginData).subscribe((res) => {
+            expect(res).toEqual(mockResponse);
+        });
     
-    //     // Expect a single request to a specific URL with the login data
-    //     const req = httpTestingController.expectOne('your-login-url');
-    //     expect(req.request.method).toBe('POST');
-    //     expect(req.request.body).toEqual(mockLoginData);
+        //! Expect a single request to a specific URL with the login data
+        const req = httpTestingController.expectOne(URL);
+        expect(req.request.method).toBe('POST');
+        expect(req.request.body).toEqual(mockLoginData);
     
-    //     // Simulate a successful HTTP response
-    //     req.flush(mockResponse);
+        //! Simulate a successful HTTP response
+        req.flush(mockResponse);
     
-    //     // Ensure that the observable completed
-    //     tick();
-    // }));
+        //! Ensure that the observable completed
+        tick();
+    }));
     
-    // it('should handle HTTP errors', fakeAsync(() => {
-    //     const mockLoginData = { username: 'testuser', password: 'testpassword' };
+    //! TEST 3 ---------------------------
+    it('LoginService: should handle HTTP errors', fakeAsync(() => {
+        const URL = 'http://localhost:8080/login';
+
+        const mockLoginData = { email: 'arunava@gmail.com', password: '12345' };
+        const mockResponse = { "email": "arunava@gmail.com", "status": "200 OK" };
+
+        const mockLoginData2 = { email: 'test@gmail.com', password: '12345' };
+
     
-    //     // Make the HTTP POST request
-    //     service.login(mockLoginData).subscribe(
-    //     () => {},
-    //     (error) => {
-    //         expect(error).toBeTruthy();
-    //     }
-    //     );
+        // Make the HTTP POST request
+        service.login(mockLoginData2).subscribe(
+            () => {},
+            (error) => {
+                expect(error).toBeTruthy();
+            }
+        );
     
-    //     // Expect a single request to a specific URL with the login data
-    //     const req = httpTestingController.expectOne('your-login-url');
-    //     expect(req.request.method).toBe('POST');
+        // Expect a single request to a specific URL with the login data
+        const req = httpTestingController.expectOne(URL);
+        expect(req.request.method).toBe('POST');
     
-    //     // Simulate an HTTP error response
-    //     req.error(new ErrorEvent('Network error'));
+        // Simulate an HTTP error response
+        req.error(new ErrorEvent('Network error'));
     
-    //     // Ensure that the observable completed
-    //     tick();
-    // }));
+        // Ensure that the observable completed
+        tick();
+    }));
 });

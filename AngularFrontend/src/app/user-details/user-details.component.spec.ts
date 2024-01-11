@@ -26,6 +26,7 @@ describe('UserDetailsComponent', () => {
         fixture.detectChanges();
     });
 
+    //! TEST 1 --------------------
     it('should create user details component', () => {
         expect(component).toBeTruthy();
     });

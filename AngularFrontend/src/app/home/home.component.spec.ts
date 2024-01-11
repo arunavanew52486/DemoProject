@@ -26,7 +26,16 @@ describe('HomeComponent', () => {
         fixture.detectChanges();
     });
 
+    //! TEST 1 ---------------------
     it('should create home component', () => {
         expect(component).toBeTruthy();
     });
+
+    //! TEST 2 ---------------------
+    it('should render title', () => {
+        const fixture = TestBed.createComponent(HomeComponent);
+        fixture.detectChanges();
+        const compiled = fixture.nativeElement as HTMLElement;
+        expect(compiled.querySelector('#app-name')?.textContent).toContain('Demo App');
+      });
 });
